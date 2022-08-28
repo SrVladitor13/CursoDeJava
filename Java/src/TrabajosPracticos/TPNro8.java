@@ -12,7 +12,7 @@ public class TPNro8 {
         raizn1 = Math.sqrt(n1);
 
 
-        System.out.println("La raiz de " + n1 + " es = " + raizn1);
+        System.out.println(raizn1);
 
         myScan.close();
     }

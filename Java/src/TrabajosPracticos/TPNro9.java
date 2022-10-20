@@ -1,39 +1,34 @@
 package TrabajosPracticos;
 import java.util.Scanner;
 
-public class TPNro9 {
-    public static void main(String[] args){
-        //Constantes utilizadas para calcular el peso ideal
-        final int calculoPesoIdealFemenino = 120;
-        final int calculoPesoIdealMasculino = 110;
-
-        float altura,   //Altura de la persona
-              pesoIdeal;    //Aqui se almacenara el peso ideal calculado de la persona
-        String sexo;    //Sexo de la persona
+public class TPNro10 {
+    public  static void main(String[] args){
+        int nroIntentos = 0,    //Numero de intentos consumidos. El intento correcto también se cuenta
+            nroAAdivinar = (int)(Math.random()*100),    //Se genera un numero al azar
+            nroIngresado;   //Variable que almacenara el numero ingresado por el usuario
         Scanner myScan = new Scanner(System.in);
 
-        //Se pide por consola la altuar de la persona
-        System.out.println("Ingrese su altura en centimetros: ");
-        altura = myScan.nextFloat();
-        myScan.nextLine();  //Esto es necesario para captar el newline de myScan.nextFloat
+        System.out.println("Se acaba de generar un numero, y usted debe adivinar cual es\nSe le indicara si el numero ingresado es correcto, mayor, o menor al numero a encontrar");
 
-        //Se pide el ingreso del sexo de la persona, y si no se ingresa una de las dos opciones, se vuelve a pedir el ingreso
+        //Se pide el ingreso de un numero hasta que corresponda con el numero a adivinar
         do{
-            System.out.println("Ingrese su sexo ['Masculino' o 'Femenino']");
-            sexo = myScan.nextLine().toLowerCase(); //Lo que sea que se ingrese se convierte a minusculas
+            System.out.println("Introduzca un numero entero entre 1 y 100");
+            nroIngresado = myScan.nextInt();
 
-        } while (!sexo.equals("masculino") && !sexo.equals("femenino"));
+            nroIntentos++;
 
-        //Dependiendo del sexo ingresado se detecta el peso ideal con la constante adecuada
-        if (sexo.equals("Femenino")){
-            pesoIdeal = altura - calculoPesoIdealFemenino;
-        }
-        else{
-            pesoIdeal = altura - calculoPesoIdealMasculino;
-        }
+            //Se informa si el numero ingresado es menor o mayor al numero a adivinar
+            if (nroIngresado < nroAAdivinar){ 
+                System.out.println("El numero ingresado es menor que el numero a adivinar!");
+            }
+            else if (nroIngresado > nroAAdivinar){
+                System.out.println("El numero ingresado es mayor que el numero a adivinar!");
+            }
+        } while (nroIngresado != nroAAdivinar);
 
-        System.out.println("Su peso ideal es de: " + pesoIdeal);
-
+        System.out.println("¡Correcto!\n¡Felicidades! El numero a adivinar era " + nroAAdivinar);
+        System.out.println("\nNumero de intentos fallidos: " + nroIntentos);
+        
         myScan.close();
     }
 }
